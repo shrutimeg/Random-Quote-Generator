@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="eng">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="view-port"  content="width = device-width,initial-scale=1.0">
+        <title>Document</title>
+        <link href="https://fonts.googleapis.com/css?family=Baloo+Bhai&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+     </head>
+    <body>
+        <div class="container">
+            <div class="quote-box"></div>
+            <p id="quote">"Quote of day---"</p>
+            <small id="author">-Author</small>
+             <div class="social">
+           <a href="https://twitter.com" target="_blank"> tweeter</a>
+           <a href="https://linkedin.com" target="_blank"> linkedin</a>
+        </div>
+        </div>
+        <button id="btn">New Quote</button>
+        <script>
+            const quote= document.querySelector("#quote");
+            const author= document.querySelector("#author");
+            const btn= document.querySelector("#btn");
+            btn.addEventListener("click",getQuote);
+            function getQuote(){
+                 fetch("http://api.quotable.io/random")
+                 .then((res) => res.json())
+                 .then((data) => {
+                    quote.innerHTML=`"${data.content}"`;
+                    author.innerHTML = `- ${data.author}`;
+
+                })
+            }
+        </script>
+    </body>
+    </html>
+
+   
